@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="fontawesome/css/all.min.css">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="testing.css">
+    <title>Document</title>
+</head>
+<body>
+        <nav class="shadow-sm" style="display: none" id="menuBar">
+                <span id="menu"  class="fa fa-align-justify shadow-sm text-white"></span>
+                <span id="menu1" class="fa fa-align-justify shadow-sm"></span>
+            </nav>
+            <div id="sidebar" class="shadow-sm">
+                <ul>
+					    <li>
+								<a href="#" id="homebtn">HOME</a>
+							</li>
+                     <li>
+                        <a href="#" id="aboutButton">ABOUT</a>
+                    </li>
+                   <li>
+                        <a href="#">HELP</a>
+                    </li>
+                        <li>
+                        <a href="#" id="histbtn">HISTORY</a>
+					</li>
+					<li>
+                        <a href="#" id="exitButton" data-toggle="modal" data-target="#exampleModal">EXIT</a>
+                    </li>
+                </ul>
+			</div>
+			<center>
+			<div id="delDiv" style="background-color: #0E096E;position:absolute; width:100%; height: 100%; z-index: 10000;background: transparent; display: none">
+				<div class="card" style="justify-content:center; width: 330px; ">
+		  <div class="card-body">
+			<h4 class="card-title text-center">Are you sure you want to delete ?</h4>
+			   <button class="btn btn-dark mr-5 ml-2 mt-3" id="confirmDel">YES, SURE</button>
+				 <button class="btn btn-danger ml-5 mt-3" id="cancele">Cancel</button>
+			</div>
+		</div>
+			</div>
+
+			<div id="hisDelDiv" style="background-color: #0E096E;position:absolute; width:100%; height: 100%; z-index: 10000;background: transparent; display: none">
+				<div class="card" style="justify-content:center; width: 330px; ">
+		  <div class="card-body">
+			<h4 class="card-title text-center">Are you sure you want to delete the Whole History?</h4>
+			   <button class="btn btn-dark mr-5 ml-2 mt-3" id="confirmDelHist">YES, SURE</button>
+				 <button class="btn btn-danger ml-5 mt-3" id="cancele">Cancel</button>
+			</div>
+		</div>
+			</div>
+  </center>
+            
+    <div class="container" id="allContainer">
+    <div class="row" style="display: none" id="mainPage">
+        <div class="col-md-12">
+              <div class="h5 col-md-12 ml-1 text-white " style="text-align: center">TRAFFIC COUNTER APP</div>
+					<div class="card-header" id="timing" style="color: #fff; background: #02015C !important; border: none"></div>
+					
+					<div id="vehicleDiv" style="width:100%" class="forDel">
+						
+    <table class="table mt-2 bg-info text-white table-sm table-borderless" id='carTable' style="border-radius: 50px; border: none;background-color:#0F0096 !important;cursor: pointer;">
+        <thead>
+            <tr>
+                <td onmouseup="countMe()"><span class="fa fa-car-alt ml-2 p-2"></span></td>
+                <td onmouseup="countMe()" class="p-2">CAR</td>
+				<td><input type="number" onmouseup="countMe()" readonly value="0" id="inlineCheckbox1" class="form-control form-control-sm  bg-info text-white allcounters"
+					 style="text-align: center; border: none;background-color:#0F0096 !important; cursor: pointer;outline-color:#0F0096"></td>
+                <td onclick="subDef2()"><span class="fa fa-minus mr-4 p-2"></span></td>
+                <td style=" background: rgb(129, 1, 1) !important;border-radius: 30px;"><span class="fa fa-times mr-3 text-white p-2" id="cardel" onclick="del('car')"></span></td>
+            </tr>
+        </thead>
+    </table>
+
+    <table class="table col-md-12 mt-3 bg-primary text-white table-sm p-3 table-borderless" id='bikeTable'  style="border-radius: 50px;background-color:#0F0096 !important;cursor: pointer;">
+            <thead>
+                <tr>
+                    <td  onmouseup="clickTocount()"><span class="fa fa-biking ml-2 p-2"></span></td>
+                    <td class="p-2" onmouseup="clickTocount()">BIKE</td>
+					<td><input type="number" id="inlineCheckbox2" value="0" readonly onmouseup="clickTocount()" class="form-control form-control-sm  bg-primary text-white allcounters" 
+						style="text-align: center; border: none;background-color:#0F0096 !important;cursor: pointer;"></td>
+                    <td  onclick="subDef()" ><span class="fa fa-minus mr-4 p-2"></span></td>
+                    <td  style=" background: rgb(129, 1, 1) !important;border-radius: 30px;" id="bikedel" onclick="del('bike')"><span class="fa fa-times mr-3 p-2 text-white"></span></td>
+                </tr>
+            </thead>
+        </table>
+        </div>
+                      
+			
+				<div style="width:100%" id="defaltDiv"> 
+				
+				</div>
+				<center>
+				<div class="btn-group mt-2 col-md-3 text-center">
+	
+				 <button type="button" class="btn btn-primary btn-sm" onclick="clearall()" id="clearAll" style="background-color:rgb(129, 1, 1) !important;">CLEAR COUNTER</button>
+			
+
+					</div>	
+					
+							
+                    <div class="input-group mt-3 col-md-3">
+                            <div class="input-group-prepend ">
+                              <span class="input-group-text  bg-success text-white" onclick="calc()" id="basic-addon1" style="background-color:#0F0096 !important;">GET TOTAL</span>
+                            </div>
+                            <input type="text" class="form-control text-center" id="showtot" value="0" readonly>
+                          </div>
+				</center>	
+
+			</div>
+				
+</div>
+
+<div class="row mt-5" id="welcomePage"> 
+	<div class="col-md-12">
+  <header class="masthead d-flex">
+<div class="container text-center my-auto">
+<h4 class="mb-5 text-white">WELCOME TO</h4>
+<h6 class="mb-5 text-white">
+<em>A Free Counting app made for Transport students or any other traffic counting.....</em>
+</h6>
+<button class="btn btn-primary" type="button" style="margin-top: 180px; background: none;border:none;outline:none">
+<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+Loading...
+</button>
+</div>
+<div class="overlay"></div>
+</header>
+		
+</div>
+</div>
+
+<div class="row mr-5" id="histPage" style="display: none"> 
+	<div class="col-md-12">
+  <!-- <header class="masthead d-flex"> -->
+	  
+<div class="container text-center my-auto">
+<h6 class="text-white mb-5 mt-3">COUNTER HISTORY  <span class="fa fa-trash ml-5" onclick="clearHistory()"></span></h6>
+
+<table class="table table-hover table-bordered" style="font-size: 10px;">
+<thead>
+<tr class="text-white">
+<td >S/N</td>
+<td>CATEGORIES</td>
+<td>TIME STARTED</td>
+<td>TIME ENDED</td>
+<td>TOTAL</td>
+</tr>
+</thead>
+	<tbody id="tbody" style="color:#fff;">
+	</tbody>
+</table>
+<div class="input-group">
+	  <h5 class="col-md-3 text-white">TIME ENDED</h5>	
+	  <input type="text" class="col-md-6 form-control text-center" style="font-weight:bolder;" id="basicaddon1" readonly>
+</div>
+<div class="overlay"></div>
+<!-- </header> -->
+		
+</div>
+</div>
+</div>
+
+<div class="row" id="exitPage"> 
+	<div class="col-md-12">
+  <header class="masthead d-flex">
+<div class="container text-center my-auto">
+<h1 class="mb-5 text-white">Thank You !</h1>
+</div>
+<div class="overlay"></div>
+</header>
+		
+</div>
+</div>
+
+<div class="row" id="aboutPage"> 
+		<div class="col-md-12">
+	  <header class="masthead d-flex">
+<div class="container text-center my-auto">
+  <h4 class="mb-5 text-white">ABOUT THE APP</h4>
+	<p class="text-white" style="font-size:1em">This is an app made for transport Students in various universities and other purposes as well....</p>
+   </div>
+<div class="overlay"></div>
+</header>
+			
+	</div>
+	</div>
+
+	<!-- </div> -->
+    </div>
+	
+	<div class="modal fade" id="myModal">
+		<div id="scrolle">
+		<div class="modal-dialog modal-sm p-3">
+			<div class="modal-content">
+				<div class="modal-header bg-secondary text-white">
+					<h6 class="modal-title">
+						ADD ITEM :
+						</h6>
+					  <button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+				<div class="modal-body">
+					<div class="form-group">
+						<label for="input1">ITEM :</label>
+						<div class="input-group mb-3">
+							<div class="input-group-prepend">
+								<span class="input-group-text"><span id="car1" class="fa fa-car-alt"></span></span>
+							</div>
+							<input type="text" class="form-control form-control-sm" id="itemList" list="item1" placeholder="Type in your choice of vehicles">
+							</div>
+<!--						This is where users choose Options for what they want-->
+						<datalist id="item1">
+							<option value="TRUCK">
+							<option value="BUS">
+							<option value="BICYCLE">
+							<option value="TRAILER">
+							<option value="WALKING">
+						    <option value="BIKE">
+						    <option value="CAR">
+							<option value="PICKUP">
+							<option value="OKADA">	
+							<option value="TAXI">
+							<option value="KEKE"></option>
+							<option value="VAN"></option>
+						</datalist>
+					</div>
+
+					<div class="form-group" id="chooseAnyIcon">
+						<label for="input1">CHOOSE ANY ICON OF YOUR CHOICE :</label>
+<!--							Icon are been choosed here-->
+							<div>
+							 <ul id="chooseIcons" >
+				  <li  id="car6" title="Train"><a href=""><button id="car6" class="btn btn-success text-black-50" style="background:none"><span class="text-black-50 fa fa-train setIcon"></span></button></a></li>
+				    <li id="car5" title="Walking"><a href=""><button class="btn btn-success text-black-50" id="car5" style="background:none"><span class="fa fa-walking setIcon"></span></button></a></li>
+				   <li id="car4"  title="Biking"><a href=""><button id="car4" class="btn btn-success text-black-50" style="background:none"><span class="fa fa-biking setIcon"></span></button></a> </li>
+			      <li id="car3"  title="Bicycle"><a href=""><button id="car3" class="btn btn-success text-black-50" style="background:none"><span class="fa fa-bicycle setIcon"></span></button></a></li>
+					<li id="car1" title="Car"><a href=""><button id="car1" class="btn btn-success text-black-50" style="background:none"><span class="fa fa-car setIcon"></span></button></a></li>	 
+		           <li id="car2" title="Bus"><a href=""><button id="car2" class="btn btn-success text-black-50" style="background:none"><span class="fa fa-bus-alt setIcon"></span></button></a></li>	
+				  <li id="car7" title="Truck"><a href=""><button id="car7" class="btn btn-success text-black-50" style="background:none"><span class="fa fa-truck setIcon"></span></button></a></li>				 
+				  <li id="car8" title="Van"><a href=""><button id="car8" class="btn btn-success text-black-50" style="background:none"><span class="fa fa-shuttle-van setIcon"></span></button></a></li>
+				  <li id="car9" title="Taxi"><a href=""><button id="car9" class="btn btn-success text-black-50" style="background:none"><span class="fa fa-taxi setIcon"></span></button></a></li>
+				  <li id="car10" title="Ambulance"><a href=""><button id="car10" class="btn btn-success text-black-50" style="background:none"><span class="fa fa-ambulance setIcon"></span></button></a></li>
+                  
+				
+				</ul>
+                   </div>
+
+			</div>		
+<!--					<select id="select" name="threads-icon" class="fa-select"></select>-->
+				</div>
+				<div class="modal-footer">
+<!--					Button that triggers when the user finish with the description and item -->
+					<button type="button" class="btn btn-primary" id="additem" onClick="addItem()">ADD</button>
+				</div>
+			</div>
+		</div>
+	</div>
+		</div>
+	
+	<!--	Modal Box for Items and their  description Ends Here-->
+
+	
+<!--	MOdal for Exit Page Starst here-->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="z-index:2000" id="exitModal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"> Are you sure you want to Exit ? </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+     <div class="modal-footer">
+        <button type="button" class="btn btn-success" data-dismiss="modal" id="stay">STAY</button>
+        <button type="button" class="btn btn-danger" id="exit">EXIT</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+	<button id="add" style="display: none" data-position="fixed" class="btn shadow-sm border rounded-circle float-right m-3 text-white" data-toggle="modal" data-target="#myModal"><span class="fa fa-plus"></span></button>
+
+
+</body>
+<script src="jquery/jquery.min.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="testing.js"></script>
+</html>
